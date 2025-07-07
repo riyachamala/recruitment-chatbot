@@ -1,4 +1,5 @@
 import os
+import sys
 from pinecone import Pinecone
 from collections import Counter
 from dotenv import load_dotenv
@@ -9,6 +10,9 @@ from langchain_pinecone import PineconeVectorStore
 
 # Load environment variables
 load_dotenv()
+
+# force UTF-8 globally in python
+sys.stdout.reconfigure(encoding='utf-8')
 
 # Pinecone setup
 pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
@@ -31,7 +35,7 @@ all_chunks = []
 for filename in os.listdir(resume_folder_path):
     if filename.endswith(".pdf"):
         filepath = os.path.join(resume_folder_path, filename)
-        print(f"📄 Processing: {filename}")
+        print(f"Processing: {filename}")
 
         resume_id = os.path.splitext(filename)[0]
         resume_name = resume_id.replace("_", " ").title()
