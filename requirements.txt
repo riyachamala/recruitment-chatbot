@@ -7,6 +7,7 @@ langchain-pinecone
 langchain-openai 
 langchain-groq
 langchain-huggingface
+sentence-transformers
 langchain-community
 python-dotenv 
 pypdf
