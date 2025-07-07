@@ -1,3 +1,5 @@
+fastapi
+uvicorn[standard]
 langchain 
 openai 
 pinecone-client 
@@ -8,3 +10,4 @@ langchain-huggingface
 langchain-community
 python-dotenv 
 pypdf
+pymupdf
