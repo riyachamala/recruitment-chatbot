@@ -1,0 +1,130 @@
+# RAG-Based Resume Chatbot 💬📄
+
+This is a Retrieval-Augmented Generation (RAG) chatbot that allows users (like hiring managers or recruiters) to upload resumes and job descriptions, ask questions, and get smart, context-aware answers.
+
+---
+
+## 🔧 Tech Stack
+
+- **Frontend**: React + Next.js (TypeScript)
+- **Backend**: FastAPI (Python)
+- **NLP Models**: HuggingFace Transformers (e.g. Sentence Transformers)
+- **Vector Store**: Pinecone
+- **PDF Parsing**: PyMuPDF
+- **State Management**: React useState/useEffect
+
+---
+
+## 🚀 Features
+
+- Upload one or more resumes (PDF format)
+- Analyze resumes against job descriptions
+- Ask questions like:
+  - "What is this candidate's relevant experience?"
+  - "Does this resume match the JD?"
+  - "What technologies has Riya worked with?"
+- Real-time chatbot UI
+- Text-to-Speech & Speech-to-Text (via ElevenLabs) *(optional/coming soon)*
+
+---
+
+## 📂 Project Structure
+
+```
+├── chatbot-frontend/
+│   ├── app/
+│   ├── components/
+│   │   └── Chat.tsx          # Main chatbot UI
+│   ├── public/
+│   ├── next.config.ts
+│   └── package.json
+├── resumes/                  # PDF files (e.g. resume_riya.pdf, resume_abhi.pdf)
+├── hf_model_cache/           # Local Hugging Face model cache
+├── .gitignore
+├── README.md
+└── backend/ (optional)       # Add FastAPI backend if separated
+```
+
+---
+
+## 🛠️ Installation
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/yourusername/rag-resume-chatbot.git
+cd rag-resume-chatbot
+```
+
+### 2. Install Frontend Dependencies
+```bash
+cd chatbot-frontend
+npm install
+```
+
+### 3. Set Environment Variables
+
+Create a `.env` file in the root and add:
+```env
+ELEVENLABS_API_KEY=your_key_here  # optional for speech
+PINECONE_API_KEY=your_key_here
+PINECONE_ENVIRONMENT=your_environment
+OPENAI_API_KEY=your_openai_key
+```
+
+---
+
+## 🧠 Backend (FastAPI)
+
+Your backend should:
+
+- Accept PDF uploads
+- Parse and embed documents using HuggingFace + Pinecone
+- Provide API endpoints to handle:
+  - `/upload` — handle PDF uploads
+  - `/chat` — handle chat requests
+
+Example FastAPI run:
+```bash
+uvicorn main:app --reload --port 8000
+```
+
+---
+
+## 🖥️ Running the Frontend
+
+```bash
+cd chatbot-frontend
+npm run dev
+```
+
+Visit: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 📌 Notes
+
+- This project uses a local HuggingFace model cache (`hf_model_cache/`). You can delete and re-fetch as needed.
+- PDF resumes should be stored in the `resumes/` folder for local testing or uploaded dynamically via backend.
+- Pinecone is used to store vector embeddings for semantic search.
+
+---
+
+## 🧪 To Do
+
+- [ ] Drag & drop file uploads
+- [ ] Session history for chats
+- [ ] Support multiple resume comparison
+- [ ] Improve TTS/STT with ElevenLabs
+- [ ] Deploy on Vercel + Render
+
+---
+
+## 🧑‍💻 Author
+
+Built with ❤️ by [Your Name]
+
+---
+
+## 📄 License
+
+MIT License
